@@ -19,7 +19,7 @@ namespace ConsoleApp1
         {
             return cars;
         }
-        public void Add( string word)
+        public void Add( Car word)
         {
             Array.Resize(ref cars, cars.Length + 1);
             cars[cars.Length - 1] = word;

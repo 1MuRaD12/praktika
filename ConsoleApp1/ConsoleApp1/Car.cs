@@ -7,12 +7,12 @@ namespace ConsoleApp1
 
     internal class Car:Vehicle
     {
-        public string Fuelcapacity;
-        public int Currentfuel;
-        public string Fuelfor1km;
+        public double Fuelcapacity;
+        public double Currentfuel;
+        public double Fuelfor1km;
         public static int Count = 0;
 
-        public Car(string color, string brand, double millage, string fuelcapacity, int currentfuel, string fuelfor1km) : base(color, brand, millage)
+        public Car(string color, string brand, double millage, double fuelcapacity, double currentfuel, double fuelfor1km) : base(color, brand, millage)
         {
             Currentfuel = currentfuel;
             Fuelcapacity = fuelcapacity;
@@ -23,16 +23,13 @@ namespace ConsoleApp1
         {
             Console.WriteLine($"Brand:{Brand} Color:{Color} Milliage:{Millage} Fuelcapacity:{Fuelcapacity} Currenfuel:{Currentfuel} fuelfor1km:{Fuelfor1km}");
         }
-        public  void Drive()
+        public void Drive(double km)
         {
-            
-            if (Currentfuel >= Millage )
-            {
-                --Count;
-                Count -= Currentfuel;
 
-                
-                Millage++;
+            if (km * Fuelfor1km < Currentfuel)
+            {
+                Currentfuel -= km * Fuelfor1km;
+                Millage += km;
             }
             else
             {
@@ -42,14 +39,6 @@ namespace ConsoleApp1
                       
         }
 
-        public static implicit operator Car(string v)
-        {
-
-            Car car = new Car("black", "BMW", 5.6, "50l", 10, "8l");
-            car.Fuelcapacity = v;
-            car.Currentfuel = Count;
-            return car;
-            
-        }
+        
     }
 }

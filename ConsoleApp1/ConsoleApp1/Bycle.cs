@@ -6,6 +6,7 @@ namespace ConsoleApp1
 {
     internal class Bycle:Vehicle
     {
+        public static int Count = 0;
 
         public Bycle(string color, string brand, double millage) : base(color, brand, millage)
         {
@@ -14,7 +15,8 @@ namespace ConsoleApp1
 
         public void Drive()
         {
-            Millage++;
+            Count++;
+            Millage = Count;
         }
         public override void Showinfo()
         {
